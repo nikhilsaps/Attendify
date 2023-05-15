@@ -11,17 +11,24 @@ class StudRegisActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stud_regis)
         //datatype for registering
-        val rollnotext:String ="1000"
+        val rollnotextfront:String ="202305"
         val nametext: TextView =findViewById(R.id.studnametext)
         val dobtext :TextView=findViewById(R.id.studdobtext)
         val coursetext:TextView=findViewById(R.id.studcoursetext)
         val semtext:TextView=findViewById(R.id.studsemtext)
         //val studimgtext:TextView
         val btnRegisStud: Button = findViewById(R.id.btnRegisStud)
-
-
         var db =DatabaseHandler(this)
+
+        // creating login to autogenerate enrollment number with +1  increment
+
+
+
         btnRegisStud.setOnClickListener {
+            // creating login to autogenerate enrollment number with +1  increment
+            var data = db.readData()
+            Toast.makeText(this,data.size.toString(),Toast.LENGTH_SHORT).show()
+            var rollnotext = rollnotextfront + data.size.toString()
             if (nametext.text.toString().length> 0){
                 var studobj=StudDataModel(rollnotext,nametext.text.toString(),dobtext.text.toString(),coursetext.text.toString(),semtext.text.toString())
                 var db =DatabaseHandler(this)

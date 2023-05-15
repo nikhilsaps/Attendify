@@ -22,6 +22,18 @@
             app:riv_corner_radius="60dip" />
 
         <TextView
+            android:id="@+id/studrollnum"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:layout_marginBottom="52dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/studrecyccardimage" />
+
+        <TextView
             android:id="@+id/studrecycnametext"
             android:layout_width="wrap_content"
             android:layout_height="22dp"

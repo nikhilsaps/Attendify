@@ -30,12 +30,13 @@ class StudRecycAdapter(private val mList: List<StudDataModel>) : RecyclerView.Ad
         // sets the image to the imageview from our itemHolder class
 
         // sets the text to the textview from our itemHolder class
+        holder.rolnum.text=ItemsViewModel.rollno
         holder.name.text = ItemsViewModel.name
         holder.course.text = ItemsViewModel.course
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView)  {
-        val imageView: ImageView = itemView.findViewById(R.id.studrecyccardimage)
+        val rolnum: TextView = itemView.findViewById(R.id.studrollnum)
         val name: TextView = itemView.findViewById(R.id.studrecycnametext)
         val course: TextView = itemView.findViewById(R.id.studrecyccoursetext)
     }
