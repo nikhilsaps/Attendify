@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.sinnikhy.attendify.R
+import com.sinnikhy.attendify.StudInfo_ID
 import com.sinnikhy.attendify.datashow.StudDataShowRecyc
 
 class StudActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class StudActivity : AppCompatActivity() {
 
         studbtn.setOnClickListener {
             if( studEnroll.text.toString()=="stud"&& studpassText.text.toString()=="stud"){
-                startActivity(Intent(this, StudDataShowRecyc::class.java))
+                startActivity(Intent(this, StudInfo_ID::class.java))
                 finish()
             }
             else {
