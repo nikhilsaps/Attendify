@@ -1,8 +1,12 @@
 package com.sinnikhy.attendify.teacher
 
 import android.content.DialogInterface
+import android.content.Intent
+import android.database.Cursor
+import android.database.sqlite.SQLiteOpenHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
@@ -12,16 +16,47 @@ import com.sinnikhy.attendify.R
 
 var Cla_Table_NAME=""
 class TeachDataLvlActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_teach_data_lvl)
         var add_new_class :ImageButton=findViewById(R.id.add_new_class)
         add_new_class.setOnClickListener {
             popupfornewclass()
         }
+        var open_Class_View:ImageButton=findViewById(R.id.open_Class_View)
+        open_Class_View.setOnClickListener {
+            val intent= Intent(this,TeachClassView::class.java)
+            startActivity(intent)
+            finish();
+        }
+
+
+
 
 
     }
+    private fun logAllTableNames() {
+        val dbcl = ClaDatabaseHandler(this)
+        val database = dbcl.readableDatabase
+        val cursor: Cursor = database.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null)
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast) {
+                val tableName = cursor.getString(0)
+                if (tableName != "android_metadata" && tableName != "sqlite_sequence") {
+                    Log.d("Database", "Table: $tableName")
+                }
+                cursor.moveToNext()
+            }
+        }
+        cursor.close()
+
+        database.close()
+    }
+
+
     private fun popupfornewclass() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Enter New Class Name  ")
@@ -33,7 +68,10 @@ class TeachDataLvlActivity : AppCompatActivity() {
         builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, _ ->
             val enteredText = input.text.toString()
             Toast.makeText(this ,enteredText,Toast.LENGTH_SHORT).show();
-            Cla_Table_NAME=enteredText
+            val dbcl = ClaDatabaseHandler(this)
+            val tableName = enteredText
+            dbcl.createTable(tableName)
+           logAllTableNames()
             dialog.dismiss()
         })
 

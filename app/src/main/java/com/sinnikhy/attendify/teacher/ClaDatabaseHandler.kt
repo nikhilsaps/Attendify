@@ -2,26 +2,39 @@ package com.sinnikhy.attendify.teacher
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-val C_DATABASE_NAME="ClassDB"
-val TABLE_NAME= Cla_Table_NAME
-val ID= "id"
-val STUDENT_NAME="Stu_Name"
-
-class ClaDatabaseHandler (context: Context) : SQLiteOpenHelper(context, C_DATABASE_NAME,null,1){
-    override fun onCreate(db: SQLiteDatabase?) {
-        val createTable = "CREATE TABLE "+ TABLE_NAME + " ("
 
 
-        db?.execSQL(createTable)
+class ClaDatabaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
+    companion object {
+        private const val DATABASE_NAME = "mydatabase.db"
+        private const val DATABASE_VERSION = 1
     }
 
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        TODO("Not yet implemented")
+    override fun onCreate(db: SQLiteDatabase) {
+        // Database creation logic
     }
 
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        // Database upgrade logic
+    }
 
+    fun createTable(tableName: String) {
+        val db = writableDatabase
+        val createTableQuery = """
+            CREATE TABLE IF NOT EXISTS $tableName (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                age INTEGER
+            )
+        """.trimIndent()
+        db.execSQL(createTableQuery)
+        db.close()
+    }
+
+    // Additional methods for inserting, querying, updating, and deleting data in specific tables
 }
