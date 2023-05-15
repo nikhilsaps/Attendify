@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".teacher.TeachDataLvlActivity">
 
+    <TextView
+
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:drawableBottom="@drawable/text_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Teacher Panel"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="380dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageButton
+        android:id="@+id/add_new_class"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/add_new_stu"
+        android:scaleType="fitXY"
+        android:src="@drawable/add_new_stu"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.sinnikhy.attendify.teacher
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -16,7 +17,7 @@ class TeachActivity : AppCompatActivity() {
         val teachbtn: Button =findViewById(R.id.teachloginbtn)
         teachbtn.setOnClickListener {
             if( userNameText.text.toString()=="teacher"&& passwordText.text.toString()=="teacher"){
-                //startActivity(Intent(this, TeaLvlDataActivity::class.java))
+                startActivity(Intent(this, TeachDataLvlActivity::class.java))
                 finish()
             }
             else {
