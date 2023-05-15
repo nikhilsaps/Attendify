@@ -69,4 +69,16 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         db.close()
         return list
     }
+    fun deleteData(rollNo: String): Int {
+        val db = this.writableDatabase
+        val columnRollNo = COL_ROLLNO
+
+        val whereClause = "$columnRollNo = ?"
+        val whereArgs = arrayOf(rollNo.toString())
+
+        val deletedRowCount = db.delete(TABLE_NAME, whereClause, whereArgs)
+        db.close()
+
+        return deletedRowCount
+    }
 }

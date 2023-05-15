@@ -1,18 +1,31 @@
 package com.sinnikhy.attendify
 
+import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.content.FileProvider
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.oned.Code128Writer
 import com.google.zxing.qrcode.QRCodeWriter
+import com.itextpdf.text.Document
+import com.itextpdf.text.Image
+import com.itextpdf.text.PageSize
+import com.itextpdf.text.pdf.PdfWriter
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 class StudInfo_ID : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,9 +68,69 @@ class StudInfo_ID : AppCompatActivity() {
             Toast.makeText(this,"Student not found",Toast.LENGTH_SHORT).show()
             finish()
         }
+        var  printTopdf :ImageButton = findViewById(R.id.stud_id_print)
+        printTopdf.setOnClickListener(){
+            generatePdfFromCardView()
+        }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+    private fun generatePdfFromCardView() {
+        val cardView: CardView = findViewById(R.id.stud_id_cardView) // Replace with your CardView reference
+
+        val bitmap = viewToBitmap(cardView)
+        val pdfFile = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "card_view.pdf")
+
+        // Create a PDF document using the library of your choice (e.g., iText, PdfDocument, etc.)
+        // Add the captured CardView image (converted to a Bitmap) to the PDF document
+        // Save the PDF document to the specified file location
+
+        // Example using iText library
+        val document = Document(PageSize.A4)
+        PdfWriter.getInstance(document, FileOutputStream(pdfFile))
+        document.open()
+        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 3000, 1800, false)
+
+        val image = Image.getInstance(bitmapToByteArray(scaledBitmap))
+        image.scaleToFit(document.pageSize.width-80, document.pageSize.height)
+        document.add(image)
+        document.close()
+
+        // Open the PDF file with an external PDF viewer
+        openPdfFile(pdfFile)
+    }
+    private fun viewToBitmap(view: View): Bitmap {
+        val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+        return bitmap
+    }
+
+    private fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        return stream.toByteArray()
+    }
+
+    private fun openPdfFile(pdfFile: File) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        val uri = FileProvider.getUriForFile(this, "com.example.fileprovider", pdfFile)
+        intent.setDataAndType(uri, "application/pdf")
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        startActivity(intent)
     }
 
     private fun generateBarcode(text: String): Bitmap? {

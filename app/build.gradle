@@ -51,4 +51,6 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.google.zxing:core:3.4.1'
+    implementation 'com.itextpdf:itextpdf:5.5.13.2'
+
 }
