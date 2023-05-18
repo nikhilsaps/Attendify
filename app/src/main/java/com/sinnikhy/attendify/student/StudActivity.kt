@@ -21,7 +21,7 @@ class StudActivity : AppCompatActivity() {
 
         studbtn.setOnClickListener {
             if( studEnroll.text.toString()=="stud"&& studpassText.text.toString()=="stud"){
-                startActivity(Intent(this, StudInfo_ID::class.java))
+                startActivity(Intent(this, StudDataLvlActivity::class.java))
                 finish()
             }
             else {

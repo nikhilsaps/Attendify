@@ -4,6 +4,7 @@ class CLAModel {
     var stu_name :String="name"
     var stu_roll :String="name"
     var teach_id:String="teach_id"
+    var classname:String="Class"
 
     constructor(stu_name:String,stu_roll:String,teach_id:String){
 
