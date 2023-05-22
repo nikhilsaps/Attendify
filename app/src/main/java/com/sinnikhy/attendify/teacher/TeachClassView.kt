@@ -20,6 +20,7 @@ import com.sinnikhy.attendify.datashow.StudRecycAdapter
 import java.text.FieldPosition
 
 class TeachClassView : AppCompatActivity() {
+    private val dataArray = ArrayList<CLAModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teach_class_view)
@@ -28,9 +29,10 @@ class TeachClassView : AppCompatActivity() {
         val layoutManager = GridLayoutManager(this, spanCount)
         cardrecyccontainer.layoutManager = layoutManager
 
-        val dataArray = ArrayList<CLAModel>()
+        logAllTableNames()
 
-// Generate 5 random data entries
+
+        /* Generate 5 random data entries
         for (i in 1..5) {
             val stuName = "Student $i"
             val stuRoll = "Roll $i"
@@ -39,6 +41,8 @@ class TeachClassView : AppCompatActivity() {
             val model = CLAModel(stuName, stuRoll, teachId)
             dataArray.add(model)
         }
+        */
+
 
         val adapter = TeachClassViewAdapter(dataArray)
 
@@ -59,7 +63,7 @@ class TeachClassView : AppCompatActivity() {
 
     }
     fun clisk(pos:Int){
-        Toast.makeText(this,"haha $pos",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"${dataArray[pos].classname} $pos",Toast.LENGTH_SHORT).show()
     }
     private fun logAllTableNames() {
         val dbcl = ClaDatabaseHandler(this)
@@ -71,7 +75,10 @@ class TeachClassView : AppCompatActivity() {
                 val tableName = cursor.getString(0)
                 if (tableName != "android_metadata" && tableName != "sqlite_sequence") {
                     Log.d("Database", "Table: $tableName")
-                    //txt.append("Table: $tableName")
+
+                    val model = CLAModel(tableName)
+                    dataArray.add(model)
+
                 }
                 cursor.moveToNext()
 
