@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="#C9C6CD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -18,7 +18,20 @@
         app:layout_constraintVertical_bias="1.0">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toTopOf="@+id/studnametext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                android:src="@drawable/person_ic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.829" />
 
             <EditText
                 android:id="@+id/studnametext"
@@ -45,10 +58,10 @@
                 android:layout_marginTop="24dp"
                 android:autofillHints="username"
                 android:background="@drawable/edittext_rounded"
-                android:drawableLeft="@drawable/person_ic"
+                android:drawableLeft="@drawable/baseline_date_range_24"
                 android:drawablePadding="20dp"
                 android:hint="Enter DOB "
-                android:inputType="text"
+                android:inputType="date"
                 android:padding="10dp"
                 android:paddingStart="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +75,7 @@
                 android:layout_marginTop="24dp"
                 android:autofillHints="username"
                 android:background="@drawable/edittext_rounded"
-                android:drawableLeft="@drawable/person_ic"
+                android:drawableLeft="@drawable/baseline_subject_24"
                 android:drawablePadding="20dp"
                 android:hint="Enter course "
                 android:inputType="text"
@@ -79,7 +92,7 @@
                 android:layout_marginTop="24dp"
                 android:autofillHints="username"
                 android:background="@drawable/edittext_rounded"
-                android:drawableLeft="@drawable/person_ic"
+                android:drawableLeft="@drawable/baseline_timeline_24"
                 android:drawablePadding="20dp"
                 android:hint="Enter Semester "
                 android:inputType="text"
@@ -93,7 +106,7 @@
                 android:id="@+id/btnRegisStud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="btnregisstud"
+                android:text="Register"
                 android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
