@@ -29,7 +29,6 @@ class TeachDataLvlActivity : AppCompatActivity() {
         open_Class_View.setOnClickListener {
             val intent= Intent(this,TeachClassView::class.java)
             startActivity(intent)
-            finish();
         }
 
 

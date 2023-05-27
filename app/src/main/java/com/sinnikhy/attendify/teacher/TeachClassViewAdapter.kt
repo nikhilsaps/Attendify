@@ -33,7 +33,7 @@ class TeachClassViewAdapter(private val CLlist: List<CLAModel>) : RecyclerView.A
         val ItemsViewModel = CLlist[position]
         holder.classname.text=ItemsViewModel.classname
 
-        holder.imgcard.setImageResource(R.drawable.person_ic)
+       // holder.imgcard.setImageResource(R.drawable.person_ic)
         holder.itemView.setOnClickListener {
             itemClickListener?.onItemClick(position)
         }

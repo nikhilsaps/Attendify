@@ -1,5 +1,6 @@
 package com.sinnikhy.attendify.teacher
 
+import android.content.Intent
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,7 @@ import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sinnikhy.attendify.ParticularClassView
 import com.sinnikhy.attendify.R
 import com.sinnikhy.attendify.datashow.StudRecycAdapter
 import java.text.FieldPosition
@@ -64,6 +66,9 @@ class TeachClassView : AppCompatActivity() {
     }
     fun clisk(pos:Int){
         Toast.makeText(this,"${dataArray[pos].classname} $pos",Toast.LENGTH_SHORT).show()
+        var intent = Intent(this,ParticularClassView::class.java)
+        intent.putExtra("Class_Name",dataArray[pos].classname)
+        startActivity(intent)
     }
     private fun logAllTableNames() {
         val dbcl = ClaDatabaseHandler(this)

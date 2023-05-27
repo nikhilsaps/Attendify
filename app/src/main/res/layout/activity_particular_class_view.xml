@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ParticularClassView">
+
+    <TextView
+        android:id="@+id/classname_in_PClassview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableBottom="@drawable/text_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Class Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/Addstudtocl"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/add_new_stu"
+        android:src="@drawable/add_new_stu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classname_in_PClassview" />
+
+    <ImageButton
+        android:id="@+id/TakeAttendence"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/add_new_stu"
+        android:src="@drawable/add_new_stu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Addstudtocl"
+        app:layout_constraintTop_toBottomOf="@+id/classname_in_PClassview" />
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Add Student"
+        app:layout_constraintBottom_toBottomOf="@+id/Addstudtocl"
+        app:layout_constraintEnd_toEndOf="@+id/Addstudtocl"
+        app:layout_constraintStart_toStartOf="@+id/Addstudtocl" />
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Take attendance"
+        app:layout_constraintBottom_toBottomOf="@+id/TakeAttendence"
+        app:layout_constraintEnd_toEndOf="@+id/TakeAttendence"
+        app:layout_constraintStart_toStartOf="@+id/TakeAttendence" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

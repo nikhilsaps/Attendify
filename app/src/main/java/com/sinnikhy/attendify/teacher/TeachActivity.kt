@@ -18,7 +18,6 @@ class TeachActivity : AppCompatActivity() {
         teachbtn.setOnClickListener {
             if( userNameText.text.toString()=="teacher"&& passwordText.text.toString()=="teacher"){
                 startActivity(Intent(this, TeachDataLvlActivity::class.java))
-                finish()
             }
             else {
                 Toast.makeText(this, "Wrong Input",Toast.LENGTH_SHORT).show()

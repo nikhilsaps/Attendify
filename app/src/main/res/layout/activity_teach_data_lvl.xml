@@ -74,10 +74,10 @@
     </androidx.cardview.widget.CardView>
 
     <ImageButton
-        android:layout_margin="16dp"
         android:id="@+id/add_new_class"
         android:layout_width="180dp"
         android:layout_height="60dp"
+        android:layout_margin="16dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/add_new_stu"
         android:scaleType="fitXY"
@@ -112,13 +112,53 @@
         android:id="@+id/btn_2"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_margin="16dp"
+        android:layout_margin="6dp"
         android:background="@drawable/add_new_stu"
         android:scaleType="fitXY"
         android:src="@drawable/add_new_stu"
         app:layout_constraintBottom_toBottomOf="@+id/btn_1"
         app:layout_constraintStart_toEndOf="@+id/btn_1"
         app:layout_constraintTop_toTopOf="@+id/btn_1" />
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Add new Cass"
+        app:layout_constraintBottom_toBottomOf="@+id/add_new_class"
+        app:layout_constraintEnd_toEndOf="@+id/add_new_class"
+        app:layout_constraintStart_toStartOf="@+id/add_new_class"
+        app:layout_constraintTop_toTopOf="@+id/add_new_class" />
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Open Casses"
+        app:layout_constraintBottom_toBottomOf="@+id/open_Class_View"
+        app:layout_constraintEnd_toEndOf="@+id/open_Class_View"
+        app:layout_constraintStart_toStartOf="@+id/open_Class_View"
+        app:layout_constraintTop_toTopOf="@+id/open_Class_View" />
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Reports"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_1"
+        app:layout_constraintEnd_toEndOf="@+id/btn_1"
+        app:layout_constraintStart_toStartOf="@+id/btn_1"
+        app:layout_constraintTop_toTopOf="@+id/btn_1" />
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Syllabus"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_2"
+        app:layout_constraintEnd_toEndOf="@+id/btn_2"
+        app:layout_constraintStart_toStartOf="@+id/btn_2"
+        app:layout_constraintTop_toTopOf="@+id/btn_2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

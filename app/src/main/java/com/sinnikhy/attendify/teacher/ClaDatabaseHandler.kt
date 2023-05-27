@@ -36,5 +36,19 @@ class ClaDatabaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE
         db.close()
     }
 
+    fun createClassStudAttendTable(tableName: String) {
+        val db = writableDatabase
+        val createTableQuery = """
+            CREATE TABLE IF NOT EXISTS $tableName (
+                Stud_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date DATE,
+                status VARCHAR(10)
+            )
+        """.trimIndent()
+        db.execSQL(createTableQuery)
+        db.close()
+    }
+
+
     // Additional methods for inserting, querying, updating, and deleting data in specific tables
 }
