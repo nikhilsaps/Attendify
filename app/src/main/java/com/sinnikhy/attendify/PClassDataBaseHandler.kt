@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper
 
 
 
-class ClaDatabaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_NAME = "mydatabase.db"
+        private const val DATABASE_NAME = "myattendatabase.db"
         private const val DATABASE_VERSION = 1
     }
 
@@ -29,7 +29,7 @@ class ClaDatabaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE
             CREATE TABLE IF NOT EXISTS $tableName (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT,
-                student_id TEXT
+                age INTEGER
             )
         """.trimIndent()
         db.execSQL(createTableQuery)
@@ -42,18 +42,18 @@ class ClaDatabaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE
             CREATE TABLE IF NOT EXISTS $tableName (
                 Stud_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 date DATE,
-                status VARCHAR(10)
+                presence VARCHAR(10)
             )
         """.trimIndent()
         db.execSQL(createTableQuery)
         db.close()
     }
 
-    fun insertData(tableName: String, name: String, studentId: String) {
+    fun insertData(tableName: String, date: String, status: String) {
         val db = writableDatabase
         val values = ContentValues()
-        values.put("name", name)
-        values.put("student_id", studentId)
+        values.put("date", date)
+        values.put("presence", status)
         db.insert(tableName, null, values)
         db.close()
     }
@@ -66,10 +66,9 @@ class ClaDatabaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE
         cursor?.let {
             if (cursor.moveToFirst()) {
                 do {
-                    val id = cursor.getInt(cursor.getColumnIndex("id"))
-                    val name = cursor.getString(cursor.getColumnIndex("name"))
-                    val studentId = cursor.getString(cursor.getColumnIndex("student_id"))
-                    val rowData = "ID: $id, Name: $name, Student ID: $studentId"
+                    val date = cursor.getString(cursor.getColumnIndex("date"))
+                    val status = cursor.getString(cursor.getColumnIndex("presence"))
+                    val rowData = "$date - $status"
                     dataList.add(rowData)
                 } while (cursor.moveToNext())
             }
