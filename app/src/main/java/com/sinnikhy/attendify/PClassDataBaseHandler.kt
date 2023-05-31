@@ -5,7 +5,14 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-
+import com.sinnikhy.attendify.COL_COURSE
+import com.sinnikhy.attendify.COL_DOB
+import com.sinnikhy.attendify.COL_NAME
+import com.sinnikhy.attendify.COL_ROLLNO
+import com.sinnikhy.attendify.COL_SEM
+import com.sinnikhy.attendify.PartiStudModel
+import com.sinnikhy.attendify.StudDataModel
+import com.sinnikhy.attendify.TABLE_NAME
 
 
 class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -41,6 +48,8 @@ class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATAB
         val createTableQuery = """
             CREATE TABLE IF NOT EXISTS $tableName (
                 Stud_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Stud_roll TEXT,
+                Stud_name TEXT,
                 date DATE,
                 presence VARCHAR(10)
             )
@@ -52,6 +61,8 @@ class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATAB
     fun insertData(tableName: String, date: String, status: String) {
         val db = writableDatabase
         val values = ContentValues()
+        //values.put("Stud_roll",Stud_roll)
+        //values.put("Stud_name",Stud_name)
         values.put("date", date)
         values.put("presence", status)
         db.insert(tableName, null, values)
@@ -77,6 +88,7 @@ class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATAB
         db.close()
         return dataList
     }
+
 
 
     // Additional methods for inserting, querying, updating, and deleting data in specific tables
