@@ -19,8 +19,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/stud_id_cardView"
-        android:layout_width="380dp"
-        android:layout_height="260dp"
+        android:layout_width="400dp"
+        android:layout_height="280dp"
         android:layout_marginTop="5dp"
         app:cardCornerRadius="60dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -130,11 +130,10 @@
 
     <ImageButton
         android:id="@+id/stud_id_print"
-        android:layout_width="240dp"
-        android:layout_height="80dp"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
         android:layout_marginTop="60dp"
         android:src="@drawable/add_new_stu"
-        android:background="@drawable/add_new_stu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stud_id_cardView" />
@@ -149,28 +148,6 @@
         app:layout_constraintEnd_toEndOf="@+id/stud_id_print"
         app:layout_constraintStart_toStartOf="@+id/stud_id_print"
         app:layout_constraintTop_toTopOf="@+id/stud_id_print" />
-
-    <ImageButton
-        android:id="@+id/stud_id_advance"
-        android:layout_width="240dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/add_new_stu"
-        android:background="@drawable/add_new_stu"
-        app:layout_constraintEnd_toEndOf="@+id/stud_id_print"
-        app:layout_constraintStart_toStartOf="@+id/stud_id_print"
-        app:layout_constraintTop_toBottomOf="@+id/stud_id_print" />
-
-    <TextView
-        android:id="@+id/textViewadv"
-        android:layout_width="240dp"
-        android:layout_height="80dp"
-        android:gravity="center"
-        android:text="See Advanced (full data) Data"
-        app:layout_constraintBottom_toBottomOf="@+id/stud_id_advance"
-        app:layout_constraintEnd_toEndOf="@+id/stud_id_advance"
-        app:layout_constraintStart_toStartOf="@+id/stud_id_advance"
-        app:layout_constraintTop_toTopOf="@+id/stud_id_advance" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

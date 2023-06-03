@@ -10,9 +10,11 @@ import com.sinnikhy.attendify.COL_DOB
 import com.sinnikhy.attendify.COL_NAME
 import com.sinnikhy.attendify.COL_ROLLNO
 import com.sinnikhy.attendify.COL_SEM
+import com.sinnikhy.attendify.ClaReport
 import com.sinnikhy.attendify.PartiStudModel
 import com.sinnikhy.attendify.StudDataModel
 import com.sinnikhy.attendify.TABLE_NAME
+import com.sinnikhy.attendify.datashow.ClaReportModel
 
 
 class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -58,11 +60,11 @@ class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATAB
         db.close()
     }
 
-    fun insertData(tableName: String, date: String, status: String) {
+    fun insertData(tableName: String, date: String, status: String,Stud_roll:String,Stud_name:String) {
         val db = writableDatabase
         val values = ContentValues()
-        //values.put("Stud_roll",Stud_roll)
-        //values.put("Stud_name",Stud_name)
+        values.put("Stud_roll",Stud_roll)
+        values.put("Stud_name",Stud_name)
         values.put("date", date)
         values.put("presence", status)
         db.insert(tableName, null, values)
@@ -87,6 +89,30 @@ class PClassDataBaseHandler (context: Context) : SQLiteOpenHelper(context, DATAB
         }
         db.close()
         return dataList
+    }
+    fun readRepINDE(tableName:String):MutableList<ClaReportModel> {
+        var list: MutableList<ClaReportModel> = ArrayList()
+        val db = this.readableDatabase
+        val query = "SELECT * FROM $tableName"
+        val cursor: Cursor? = db.rawQuery(query, null)
+        cursor?.let {
+            if (cursor.moveToFirst()) {
+                do {
+                    val stud = ClaReportModel()
+                    stud.Studname = cursor.getString(cursor.getColumnIndex("Stud_name"))
+                    stud.Studroll = cursor.getString(cursor.getColumnIndex("Stud_roll"))
+                    stud.date = cursor.getString(cursor.getColumnIndex("date"))
+                    stud.presence = cursor.getString(cursor.getColumnIndex("presence"))
+
+
+                    list.add(stud)
+
+                } while (cursor.moveToNext())
+            }
+            cursor.close()
+        }
+        db.close()
+        return list
     }
 
 

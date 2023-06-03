@@ -38,7 +38,7 @@ class AdminDataLvlActivity : AppCompatActivity() {
 
 
     }
-    private fun showInputDialog() {
+    public fun showInputDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Enter The Roll number ")
 

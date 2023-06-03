@@ -26,7 +26,7 @@ class StudActivity : AppCompatActivity() {
 
         studbtn.setOnClickListener {
             for (i in 0..data.size-1){
-                if ( studEnroll.text.toString()==data[i].rollno.toString()&&studpassText.text.toString()==data[i].dob){
+                if ( studEnroll.text.toString()==data[i].rollno.toString()&&studpassText.text.toString()==data[i].sem){
                     Toast.makeText(this,"${data[i].rollno} , ${data[i].dob},  ${data[i].name}",Toast.LENGTH_SHORT).show()
                     var intent =Intent(this ,StudDataLvlActivity::class.java)
 

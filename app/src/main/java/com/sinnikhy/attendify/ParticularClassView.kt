@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sinnikhy.attendify.datashow.StudDataShowRecyc
 
 import com.sinnikhy.attendify.teacher.ClaDatabaseHandler
 import com.sinnikhy.attendify.teacher.PClassDataBaseHandler
@@ -28,9 +29,6 @@ class ParticularClassView : AppCompatActivity() {
 
         val databaseHandler = PClassDataBaseHandler(this)
         databaseHandler.createClassStudAttendTable(tablename+"atten")
-        val date = "2023-05-27"
-        val attend = "Present"
-        val insertedId = databaseHandler.insertData(tablename+"atten",date, attend)
         val dataList = databaseHandler.readData(tablename+"atten")
         for (rowData in dataList) {
             Log.d("Datae", rowData)
@@ -40,6 +38,13 @@ class ParticularClassView : AppCompatActivity() {
         var  btn_addtocl:ImageButton =findViewById(R.id.Addstudtocl)
         btn_addtocl.setOnClickListener {
             showInputboxtoaddstudent()
+        }
+
+        var btn_reportsee:ImageButton=findViewById(R.id.seereport)
+        btn_reportsee.setOnClickListener {
+            var intentrep = Intent(this, ClaReport::class.java)
+            intentrep.putExtra("Claname",tablename)
+            startActivity(intentrep)
         }
 
        var  stud_list_show:RecyclerView = findViewById(R.id.particular_stud_recyc_all)

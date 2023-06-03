@@ -1,12 +1,13 @@
 package com.sinnikhy.attendify.student
 
 import android.Manifest
+import android.R.attr.bitmap
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap.CompressFormat
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -14,25 +15,38 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sinnikhy.attendify.ParticularClassView
 import com.sinnikhy.attendify.R
 import com.sinnikhy.attendify.teacher.CLAModel
 import com.sinnikhy.attendify.teacher.ClaDatabaseHandler
+import com.sinnikhy.attendify.teacher.PClassDataBaseHandler
 import com.sinnikhy.attendify.teacher.TeachClassViewAdapter
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
+
 
 class StudClaListView : AppCompatActivity() {
     private val dataArray = ArrayList<CLAModel>()
+    var nameonpage:String = ""
     var cameraRequest = 1888
     private lateinit var dialog: Dialog
     lateinit var imageView: ImageView
+    var currentDate: Date = Date()
+    var dateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+    lateinit var posi: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stud_cla_list_view)
         var cardrecyccontainer : RecyclerView =findViewById(R.id.classrecycler_instud_view)
+
+        nameonpage= intent.getStringExtra("nameofstud").toString()
         val spanCount = 2 // Replace with the desired number of columns in the grid
         val layoutManager = GridLayoutManager(this, spanCount)
         cardrecyccontainer.layoutManager = layoutManager
@@ -72,6 +86,7 @@ class StudClaListView : AppCompatActivity() {
     }
     fun clisk(pos:Int){
         Toast.makeText(this,"${dataArray[pos].classname} $pos", Toast.LENGTH_SHORT).show()
+        posi=dataArray[pos].classname
         openPopup()
 
     }
@@ -106,8 +121,10 @@ class StudClaListView : AppCompatActivity() {
         dialog.setContentView(R.layout.popup_lay)
 
 
+
         val cancelButton = dialog.findViewById<Button>(R.id.Camerabtn)
         cancelButton.setOnClickListener {
+
            runcamera()
         }
 
@@ -115,7 +132,9 @@ class StudClaListView : AppCompatActivity() {
         submitButton.setOnClickListener {
             val editText = dialog.findViewById<EditText>(R.id.editText)
             val enteredText = editText.text.toString()
-            // Do something with the entered text
+            Toast.makeText(this,"attedance marked for "+enteredText+ posi,Toast.LENGTH_SHORT).show()
+            val dbattendHandler = PClassDataBaseHandler(this)
+            dbattendHandler.insertData(posi+"atten",enteredText, "present","",nameonpage)
             dialog.dismiss()
         }
 
@@ -126,6 +145,12 @@ class StudClaListView : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == cameraRequest) {
             val photo: Bitmap = data?.extras?.get("data") as Bitmap
+            var dateString = dateFormat.format(currentDate)
+
+            val dbattendHandler = PClassDataBaseHandler(this)
+            dbattendHandler.insertData(posi+"atten",dateString, "present","",nameonpage)
+            Toast.makeText(this, "attendance is marked "+dateString,Toast.LENGTH_SHORT).show()
+
             dialog.dismiss()
         }
     }
@@ -138,6 +163,9 @@ class StudClaListView : AppCompatActivity() {
 
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(cameraIntent, cameraRequest)
+
+    }
+    fun markattendance(){
 
     }
 }

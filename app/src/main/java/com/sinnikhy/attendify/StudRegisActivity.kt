@@ -27,13 +27,12 @@ class StudRegisActivity : AppCompatActivity() {
         btnRegisStud.setOnClickListener {
             // creating login to autogenerate enrollment number with +1  increment
             var data = db.readData()
-            Toast.makeText(this,data.size.toString(),Toast.LENGTH_SHORT).show()
             var rollnotext = rollnotextfront + data.size.toString()
             if (nametext.text.toString().length> 0){
                 var studobj=StudDataModel(rollnotext,nametext.text.toString(),dobtext.text.toString(),coursetext.text.toString(),semtext.text.toString())
                 var db =DatabaseHandler(this)
                 db.insertData(studobj)
-                Toast.makeText(this, "done",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "done Roll number ${rollnotext} ",Toast.LENGTH_SHORT).show()
             }
             else{
                 Toast.makeText(this, "please fill in ",Toast.LENGTH_SHORT).show()

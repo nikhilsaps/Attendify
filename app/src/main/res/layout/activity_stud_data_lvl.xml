@@ -25,57 +25,62 @@
         android:layout_width="380dp"
         android:layout_height="280dp"
         android:background="@drawable/id_card_outline"
+        android:elevation="8dp"
         app:cardCornerRadius="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textstupannel">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/aboutusimage">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/textView6"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="72dp">
+                android:layout_height="40dp"
+                android:background="#330704"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Integral University BCA Project"
+                android:drawableBottom="@drawable/text_bg"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Integral University BCA Project"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/nameofthestud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableBottom="@drawable/text_bg"
+                android:layout_below="@+id/textView6"
+                android:layout_marginTop="93dp"
+                android:gravity="left"
+                android:padding="10dp"
+                android:text="Shashank Verma"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/nameofthestud"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Shashank Verma"
-                    android:textSize="15sp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.501"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            <TextView
+                android:id="@+id/courseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableBottom="@drawable/text_bg"
+                android:layout_below="@+id/nameofthestud"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:padding="10dp"
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="BCA"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
 
 
     <ImageButton
@@ -116,15 +121,6 @@
         app:layout_constraintEnd_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="79dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studcapture_button" />
-
     <TextView
         android:id="@+id/textView7"
         android:layout_width="170dp"
@@ -144,7 +140,7 @@
         android:layout_marginEnd="4dp"
         android:gravity="center"
         android:paddingBottom="10dp"
-        android:text="All Attendance"
+        android:text="Academic Cal"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
         app:layout_constraintEnd_toEndOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="@+id/imageButton2"
@@ -166,10 +162,41 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:paddingBottom="10dp"
-        android:text="Reports"
+        android:text="Central Library"
         app:layout_constraintBottom_toBottomOf="@+id/studcapture_button"
         app:layout_constraintEnd_toEndOf="@+id/studcapture_button"
         app:layout_constraintStart_toStartOf="@+id/studcapture_button"
         app:layout_constraintTop_toTopOf="@+id/studcapture_button" />
+
+    <ImageButton
+        android:id="@+id/officailapptrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/btn_design"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studcapture_button" />
+
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:text="IUL App"
+        app:layout_constraintBottom_toBottomOf="@+id/officailapptrans"
+        app:layout_constraintEnd_toEndOf="@+id/officailapptrans"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/officailapptrans" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="64dp"
+        android:layout_height="29dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

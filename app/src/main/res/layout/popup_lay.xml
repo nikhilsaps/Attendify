@@ -24,14 +24,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="Camera Capture" />
 
         <Button
             android:id="@+id/presentbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Submit" />
+            android:text="No Camera Present " />
     </LinearLayout>
 
 </RelativeLayout>
